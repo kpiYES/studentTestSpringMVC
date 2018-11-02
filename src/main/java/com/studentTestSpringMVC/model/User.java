@@ -3,12 +3,9 @@ package com.studentTestSpringMVC.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "studentTest_app")
 public class User {
 
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Role role;
     private String firstName;
@@ -31,6 +28,9 @@ public class User {
 //        this.hash = hash;
 //    }
 
+    @Id
+    @Column(name="user_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -39,6 +39,8 @@ public class User {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
     public Role getRole() {
         return role;
     }
@@ -47,6 +49,7 @@ public class User {
         this.role = role;
     }
 
+    @Column(name="first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -55,6 +58,7 @@ public class User {
         this.firstName = fistName;
     }
 
+    @Column(name="last_name")
     public String getLastName() {
         return lastName;
     }
@@ -63,6 +67,7 @@ public class User {
         this.lastName = lastName;
     }
 
+    @Column(name="mail")
     public String getMail() {
         return mail;
     }
@@ -71,6 +76,7 @@ public class User {
         this.mail = mail;
     }
 
+    @Column(name="salt")
     public String getSalt() {
         return salt;
     }
@@ -79,6 +85,7 @@ public class User {
         this.salt = salt;
     }
 
+    @Column(name="hash")
     public String getHash() {
         return hash;
     }
@@ -133,7 +140,7 @@ public class User {
                 ", mail='" + mail + '\'' +
                 ", salt='" + salt + '\'' +
                 ", hash='" + hash + '\'' +
-                ", passedTestSet=" + passedTestSet +
+//                ", passedTestSet=" + passedTestSet +
                 '}';
     }
 }

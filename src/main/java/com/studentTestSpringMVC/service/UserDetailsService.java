@@ -1,6 +1,8 @@
 package com.studentTestSpringMVC.service;
 
+import com.studentTestSpringMVC.model.User;
+
 public interface UserDetailsService {
 
-    User logIn(String email, String password);
+    void logIn();
 }
